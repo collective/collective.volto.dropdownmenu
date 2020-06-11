@@ -1,0 +1,48 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2020-06-11 15:31+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.volto.dropdownmenu\n"
+
+#: collective/volto/dropdownmenu/profiles/default/controlpanel.xml
+msgid "Dropdown Menu settings"
+msgstr "Impostazioni Dropdown Menu"
+
+#: collective/volto/dropdownmenu/configure.zcml:21
+msgid "Installs the collective.volto.dropdownmenu add-on."
+msgstr "Install collective.volto.dropdownmenu."
+
+#: collective/volto/dropdownmenu/configure.zcml:30
+msgid "Uninstalls the collective.volto.dropdownmenu add-on."
+msgstr "Disinstalla collective.volto.dropdownmenu."
+
+#: collective/volto/dropdownmenu/configure.zcml:21
+msgid "Volto Dropdown Menu"
+msgstr "Volto Dropdown Menu"
+
+#: collective/volto/dropdownmenu/configure.zcml:30
+msgid "Volto Dropdown Menu (uninstall)"
+msgstr "Volto Dropdown Menu (disinstalla)"
+
+#. Default: "Dropdown Menu Settings"
+#: collective/volto/dropdownmenu/browser/controlpanel.py:10
+msgid "dropdown_menu_settings_label"
+msgstr "Impostazioni Dropdown Menu"
+
+#. Default: "Menu configuration"
+#: collective/volto/dropdownmenu/interfaces.py:10
+msgid "menu_configuration_label"
+msgstr "Configurazione Menu"

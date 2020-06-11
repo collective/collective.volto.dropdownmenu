@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.volto.dropdownmenu">
+
+      <browser:page
+      class=".controlpanel.DropDownMenu"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      layer="collective.volto.dropdownmenu.interfaces.ICollectiveVoltoDropDownMenuLayer"
+      name="dropdown-menu-settings"
+      permission="cmf.ManagePortal"
+  />
+
+</configure>

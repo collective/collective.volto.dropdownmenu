@@ -1,0 +1,10 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <include package="plone.restapi"  />
+  <include package=".dropdown_menu"  />
+  <include package=".services"  />
+
+
+</configure>

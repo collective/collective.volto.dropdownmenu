@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object
+    name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="collective.volto.dropdownmenu"
+    purge="False">
+
+    <configlet
+        title="Dropdown Menu settings"
+        action_id="DropDownMenu"
+        appId="collective.volto.dropdownmenu"
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/@@dropdown-menu-settings"
+        icon_expr=""
+        visible="True"
+        i18n:attributes="title">
+        <permission>Manage portal</permission>
+    </configlet>
+
+</object>
