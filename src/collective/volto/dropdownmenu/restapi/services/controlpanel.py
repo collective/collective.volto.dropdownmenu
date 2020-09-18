@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
-from collective.volto.dropdownmenu.interfaces import IDropDownMenu
+from collective.volto.dropdownmenu.interfaces import (
+    ICollectiveVoltoDropDownMenuLayer,
+    IDropDownMenu,
+)
 from plone.restapi.controlpanels import RegistryConfigletPanel
 from zope.component import adapter
+from zope.interface import implementer
 from zope.interface import Interface
 
 
-@adapter(Interface, Interface)
+@adapter(Interface, ICollectiveVoltoDropDownMenuLayer)
+@implementer(IDropDownMenu)
 class DropDownMenuControlpanel(RegistryConfigletPanel):
     schema = IDropDownMenu
     configlet_id = "DropDownMenu"

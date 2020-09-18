@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 from collective.volto.dropdownmenu.interfaces import IDropDownMenu
+from collective.volto.dropdownmenu.restapi.serializer.dropdown_menu import (
+    serialize_data,
+)
 from plone import api
 from plone.restapi.services import Service
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
-
-import json
 
 
 @implementer(IPublishTraverse)
@@ -19,4 +20,4 @@ class DropDownMenuGet(Service):
         )
         if not record:
             return {}
-        return json.loads(record)
+        return serialize_data(json_data=record, show_children=True)
