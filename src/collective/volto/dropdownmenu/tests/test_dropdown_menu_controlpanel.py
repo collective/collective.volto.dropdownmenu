@@ -569,4 +569,3 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
             result[0]["rootPath"],
             "/".join(self.alternative_root.getPhysicalPath()),
         )
-
