@@ -3,20 +3,17 @@ from collective.volto.dropdownmenu.testing import (
     VOLTO_DROPDOWNMENU_API_FUNCTIONAL_TESTING,
 )
 from collective.volto.dropdownmenu.interfaces import IDropDownMenu
-from plone.restapi.interfaces import ISerializeToJson
-from zope.component import getMultiAdapter
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
+from plone.restapi.interfaces import ISerializeToJson
+from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.testing import RelativeSession
 from transaction import commit
-from collective.volto.dropdownmenu.interfaces import IDropDownMenu
 from zope.component import getMultiAdapter
 from zope.globalrequest import getRequest
-from zope.interface import implementer
-from plone.restapi.interfaces import ISerializeToJsonSummary
 
 import json
 import unittest

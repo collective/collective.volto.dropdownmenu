@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from collective.volto.dropdownmenu import _
 from plone.restapi.controlpanels.interfaces import IControlpanel
-from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.schema import SourceText
 

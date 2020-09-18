@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
+from Acquisition import aq_parent
 from collective.volto.dropdownmenu.interfaces import IDropDownMenu
+from plone import api
 from plone.restapi.deserializer import json_body
 from plone.restapi.deserializer.controlpanels import (
     ControlpanelDeserializeFromJson,
-    FakeDXContext,
 )
 from plone.restapi.interfaces import IDeserializeFromJson
-from zope.component import adapter, queryMultiAdapter
-from zope.interface import implementer
-from zExceptions import BadRequest
-from plone import api
 from plone.uuid.interfaces import IUUID
 from plone.uuid.interfaces import IUUIDAware
-from Acquisition import aq_parent
+from zExceptions import BadRequest
+from zope.component import adapter
+from zope.interface import implementer
 
 import json
 
