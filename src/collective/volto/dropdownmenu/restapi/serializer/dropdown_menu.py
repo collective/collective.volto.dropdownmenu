@@ -38,6 +38,8 @@ def serialize_data(json_data, show_children=False):
                             (item, getRequest()), ISerializeToJsonSummary
                         )()
                         if summary:
+                            # serializer doesn't return uid
+                            summary["UID"] = uid
                             if show_children:
                                 summary["items"] = get_item_children(item)
                             serialized.append(summary)
