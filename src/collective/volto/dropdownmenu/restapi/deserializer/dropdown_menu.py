@@ -18,24 +18,24 @@ import json
 KEYS_WITH_URL = ["linkUrl", "navigationRoot", "showMoreLink"]
 
 
-def path2uid(context, path):
-    # unrestrictedTraverse requires a string on py3. see:
-    # https://github.com/zopefoundation/Zope/issues/674
-    if not isinstance(path, str):
-        path = path.decode("utf-8")
+# def path2uid(context, path):
+#     # unrestrictedTraverse requires a string on py3. see:
+#     # https://github.com/zopefoundation/Zope/issues/674
+#     if not isinstance(path, str):
+#         path = path.decode("utf-8")
 
-    portal_url = api.portal.get().absolute_url()
-    if path and path.startswith(portal_url):
-        path = path[len(portal_url) + 1 :]  # noqa
-    obj = context.unrestrictedTraverse(path, None)
-    if obj is None:
-        return None
-    segments = path.split("/")
-    suffix = ""
-    while not IUUIDAware.providedBy(obj):
-        obj = aq_parent(obj)
-        suffix += "/" + segments.pop()
-    return IUUID(obj)
+#     portal_url = api.portal.get().absolute_url()
+#     if path and path.startswith(portal_url):
+#         path = path[len(portal_url) + 1 :]  # noqa
+#     obj = context.unrestrictedTraverse(path, None)
+#     if obj is None:
+#         return None
+#     segments = path.split("/")
+#     suffix = ""
+#     while not IUUIDAware.providedBy(obj):
+#         obj = aq_parent(obj)
+#         suffix += "/" + segments.pop()
+#     return IUUID(obj)
 
 
 @implementer(IDeserializeFromJson)
@@ -68,11 +68,10 @@ class DropDownMenuControlpanelDeserializeFromJson(
             raise BadRequest(errors)
 
     def deserialize_data(self, data):
-        portal = api.portal.get()
         for root in data:
             rootpath = root.get("rootPath", "")
             if rootpath != "/":
-                uid = path2uid(portal, rootpath)
+                uid = rootpath.get("UID", "")
                 if not uid:
                     raise ValueError(
                         "Root element not found: {}".format(rootpath)
@@ -83,8 +82,6 @@ class DropDownMenuControlpanelDeserializeFromJson(
                     value = tab.get(key, [])
                     if value:
                         tab[key] = [
-                            path2uid(portal, x["@id"])
-                            for x in value
-                            if path2uid(portal, x["@id"])
+                            x.get("UID", "") for x in value if x.get("UID", "")
                         ]
         return data
