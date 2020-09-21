@@ -350,7 +350,7 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
 
         data = [
             {
-                "rootPath": "/".join(self.alternative_root.getPhysicalPath()),
+                "rootPath": self.serialize(self.alternative_root),
                 "items": [{"title": "First tab", "foo": "bar"}],
             }
         ]
@@ -390,10 +390,12 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         result = json.loads(response.json()["data"]["menu_configuration"])
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["items"][0]["linkUrl"]), 2)
-        self.assertEqual(
-            result[0]["items"][0]["linkUrl"],
-            [self.serialize(self.folder_a), self.serialize(self.folder_b)],
-        )
+
+        linkUrls = result[0]["items"][0]["linkUrl"]
+        self.assertEqual(linkUrls[0]["UID"], self.folder_a.UID())
+        self.assertEqual(linkUrls[1]["UID"], self.folder_b.UID())
+        self.assertEqual(linkUrls[0]["title"], self.folder_a.title)
+        self.assertEqual(linkUrls[1]["title"], self.folder_b.title)
 
     def test_serializer_convert_linkUrl_from_uid_to_summary_and_skip_broken_items(  # noqa
         self
@@ -418,9 +420,10 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         result = json.loads(response.json()["data"]["menu_configuration"])
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["items"][0]["linkUrl"]), 1)
-        self.assertEqual(
-            result[0]["items"][0]["linkUrl"], [self.serialize(self.folder_a)]
-        )
+
+        linkUrls = result[0]["items"][0]["linkUrl"]
+        self.assertEqual(linkUrls[0]["UID"], self.folder_a.UID())
+        self.assertEqual(linkUrls[0]["title"], self.folder_a.title)
 
     def test_serializer_convert_navigationRoot_from_uid_to_summary(self):
 
@@ -446,10 +449,12 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         result = json.loads(response.json()["data"]["menu_configuration"])
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["items"][0]["navigationRoot"]), 2)
-        self.assertEqual(
-            result[0]["items"][0]["navigationRoot"],
-            [self.serialize(self.folder_a), self.serialize(self.folder_b)],
-        )
+
+        navigationRoots = result[0]["items"][0]["navigationRoot"]
+        self.assertEqual(navigationRoots[0]["UID"], self.folder_a.UID())
+        self.assertEqual(navigationRoots[1]["UID"], self.folder_b.UID())
+        self.assertEqual(navigationRoots[0]["title"], self.folder_a.title)
+        self.assertEqual(navigationRoots[1]["title"], self.folder_b.title)
 
     def test_serializer_convert_navigationRoot_from_uid_to_summary_and_skip_broken_items(  # noqa
         self
@@ -474,10 +479,10 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         result = json.loads(response.json()["data"]["menu_configuration"])
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["items"][0]["navigationRoot"]), 1)
-        self.assertEqual(
-            result[0]["items"][0]["navigationRoot"],
-            [self.serialize(self.folder_a)],
-        )
+
+        navigationRoots = result[0]["items"][0]["navigationRoot"]
+        self.assertEqual(navigationRoots[0]["UID"], self.folder_a.UID())
+        self.assertEqual(navigationRoots[0]["title"], self.folder_a.title)
 
     def test_serializer_convert_showMoreLink_from_uid_to_summary(self):
 
@@ -503,10 +508,12 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         result = json.loads(response.json()["data"]["menu_configuration"])
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["items"][0]["showMoreLink"]), 2)
-        self.assertEqual(
-            result[0]["items"][0]["showMoreLink"],
-            [self.serialize(self.folder_a), self.serialize(self.folder_b)],
-        )
+
+        showMoreLinks = result[0]["items"][0]["showMoreLink"]
+        self.assertEqual(showMoreLinks[0]["UID"], self.folder_a.UID())
+        self.assertEqual(showMoreLinks[1]["UID"], self.folder_b.UID())
+        self.assertEqual(showMoreLinks[0]["title"], self.folder_a.title)
+        self.assertEqual(showMoreLinks[1]["title"], self.folder_b.title)
 
     def test_serializer_convert_showMoreLink_from_uid_to_summary_and_skip_broken_items(  # noqa
         self
@@ -531,10 +538,10 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         result = json.loads(response.json()["data"]["menu_configuration"])
         self.assertEqual(len(result), 1)
         self.assertEqual(len(result[0]["items"][0]["showMoreLink"]), 1)
-        self.assertEqual(
-            result[0]["items"][0]["showMoreLink"],
-            [self.serialize(self.folder_a)],
-        )
+
+        showMoreLinks = result[0]["items"][0]["showMoreLink"]
+        self.assertEqual(showMoreLinks[0]["UID"], self.folder_a.UID())
+        self.assertEqual(showMoreLinks[0]["title"], self.folder_a.title)
 
     def test_serializer_dont_convert_rootPath_if_is_site_root(self):
 
