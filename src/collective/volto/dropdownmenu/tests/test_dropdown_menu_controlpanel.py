@@ -132,13 +132,13 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
             "menu_configuration", interface=IDropDownMenu, default=""
         )
         if not record:
-            return {}
+            return []
         return json.loads(record)
 
     def test_return_empty_dict_if_not_set(self):
         response = self.api_session.get("/@dropdown-menu")
         results = response.json()
-        self.assertEqual(results, {})
+        self.assertEqual(results, [])
 
     def test_set_wrong_data(self):
         response = self.api_session.patch(
