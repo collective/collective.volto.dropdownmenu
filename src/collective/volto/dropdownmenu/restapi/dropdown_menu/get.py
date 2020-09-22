@@ -19,5 +19,5 @@ class DropDownMenuGet(Service):
             "menu_configuration", interface=IDropDownMenu, default=""
         )
         if not record:
-            return {}
+            return []
         return serialize_data(json_data=record, show_children=True)

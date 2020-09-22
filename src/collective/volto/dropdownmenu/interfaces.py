@@ -10,6 +10,7 @@ class IDropDownMenu(IControlpanel):
         title=_("menu_configuration_label", default="Menu configuration"),
         description="",
         required=True,
+        default="[]",
     )
 
 

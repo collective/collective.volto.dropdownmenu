@@ -346,11 +346,11 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
         self.assertEqual(len(record), 1)
         self.assertEqual(record[0]["rootPath"], "/")
 
-    def test_deserializer_convert_rootPath_to_uid_if_is_normal_content(self):
+    def test_deserializer_convert_rootPath_to_uid_if_path_is_correct(self):
 
         data = [
             {
-                "rootPath": self.serialize(self.alternative_root),
+                "rootPath": "/alternative-root",
                 "items": [{"title": "First tab", "foo": "bar"}],
             }
         ]
