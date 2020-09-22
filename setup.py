@@ -31,7 +31,7 @@ setup(
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
-    keywords="Python Plone",
+    keywords="Python Plone Volto",
     author="RedTurtle Technology",
     author_email="sviluppo@redturtle.it",
     url="https://github.com/collective/collective.volto.dropdownmenu",
