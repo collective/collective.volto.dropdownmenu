@@ -3,6 +3,7 @@ from collective.volto.dropdownmenu import _
 from plone.restapi.controlpanels.interfaces import IControlpanel
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.schema import SourceText
+import json
 
 
 class IDropDownMenu(IControlpanel):
@@ -10,7 +11,7 @@ class IDropDownMenu(IControlpanel):
         title=_("menu_configuration_label", default="Menu configuration"),
         description="",
         required=True,
-        default="[]",
+        default=json.dumps([{"rootPath": "/", "items": []}]),
     )
 
 
