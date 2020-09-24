@@ -5,6 +5,7 @@
 
   <adapter
         factory=".controlpanel.DropDownMenuControlpanel"
+        provides="collective.volto.dropdownmenu.interfaces.IDropDownMenu"
         name="dropdown-menu-settings" />
 
 </configure>
