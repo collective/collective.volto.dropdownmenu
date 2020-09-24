@@ -138,7 +138,7 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
     def test_return_empty_dict_if_not_set(self):
         response = self.api_session.get("/@dropdown-menu")
         results = response.json()
-        self.assertEqual(results, [])
+        self.assertEqual(results, [{"rootPath": "/", "items": []}])
 
     def test_set_wrong_data(self):
         response = self.api_session.patch(
@@ -238,7 +238,7 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
         )
 
     def test_deserializer_convert_navigationRoot_into_uids_and_skip_wrong_paths(  # noqa
-        self
+        self,
     ):
 
         data = [
@@ -300,7 +300,7 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
         )
 
     def test_deserializer_convert_showMoreLink_into_uids_and_skip_wrong_paths(  # noqa
-        self
+        self,
     ):
 
         data = [
@@ -398,7 +398,7 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         self.assertEqual(linkUrls[1]["title"], self.folder_b.title)
 
     def test_serializer_convert_linkUrl_from_uid_to_summary_and_skip_broken_items(  # noqa
-        self
+        self,
     ):
 
         data = [
@@ -457,7 +457,7 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         self.assertEqual(navigationRoots[1]["title"], self.folder_b.title)
 
     def test_serializer_convert_navigationRoot_from_uid_to_summary_and_skip_broken_items(  # noqa
-        self
+        self,
     ):
 
         data = [
@@ -516,7 +516,7 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         self.assertEqual(showMoreLinks[1]["title"], self.folder_b.title)
 
     def test_serializer_convert_showMoreLink_from_uid_to_summary_and_skip_broken_items(  # noqa
-        self
+        self,
     ):
 
         data = [
