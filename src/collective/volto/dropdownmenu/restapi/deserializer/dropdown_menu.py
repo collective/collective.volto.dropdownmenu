@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from collective.volto.dropdownmenu.interfaces import IDropDownMenu
-from plone import api
 from plone.restapi.deserializer import json_body
 from plone.restapi.deserializer.controlpanels import (
     ControlpanelDeserializeFromJson,
