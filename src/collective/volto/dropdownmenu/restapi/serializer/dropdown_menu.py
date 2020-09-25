@@ -20,11 +20,6 @@ def serialize_data(json_data, show_children=False):
         return ""
     data = json.loads(json_data)
     for root in data:
-        rootpath = root.get("rootPath", "")
-        if rootpath != "/":
-            root_item = api.content.get(UID=rootpath)
-            if root_item:
-                root["rootPath"] = root_item.absolute_url()
         for tab in root.get("items", []):
             for key in KEYS_WITH_URL:
                 value = tab.get(key, [])

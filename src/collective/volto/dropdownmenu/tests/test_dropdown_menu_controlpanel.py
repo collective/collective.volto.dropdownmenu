@@ -331,39 +331,6 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
             record[0]["items"][0]["showMoreLink"], [self.folder_a.UID()]
         )
 
-    def test_deserializer_dont_convert_rootPath_if_is_site_root(self):
-
-        data = [
-            {"rootPath": "/", "items": [{"title": "First tab", "foo": "bar"}]}
-        ]
-        self.api_session.patch(
-            self.controlpanel_url,
-            json={"menu_configuration": json.dumps(data)},
-        )
-        commit()
-        record = self.get_record_value()
-
-        self.assertEqual(len(record), 1)
-        self.assertEqual(record[0]["rootPath"], "/")
-
-    def test_deserializer_convert_rootPath_to_uid_if_path_is_correct(self):
-
-        data = [
-            {
-                "rootPath": "/alternative-root",
-                "items": [{"title": "First tab", "foo": "bar"}],
-            }
-        ]
-        self.api_session.patch(
-            self.controlpanel_url,
-            json={"menu_configuration": json.dumps(data)},
-        )
-        commit()
-        record = self.get_record_value()
-
-        self.assertEqual(len(record), 1)
-        self.assertEqual(record[0]["rootPath"], self.alternative_root.UID())
-
 
 class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
     def serialize(self, item):
@@ -542,36 +509,3 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         showMoreLinks = result[0]["items"][0]["showMoreLink"]
         self.assertEqual(showMoreLinks[0]["UID"], self.folder_a.UID())
         self.assertEqual(showMoreLinks[0]["title"], self.folder_a.title)
-
-    def test_serializer_dont_convert_rootPath_if_is_site_root(self):
-
-        data = [
-            {"rootPath": "/", "items": [{"title": "First tab", "foo": "bar"}]}
-        ]
-        self.set_record_value(data=data)
-        commit()
-
-        response = self.api_session.get(self.controlpanel_url)
-        result = json.loads(response.json()["data"]["menu_configuration"])
-
-        self.assertEqual(len(result), 1)
-        self.assertEqual(result[0]["rootPath"], "/")
-
-    def test_serializer_convert_rootPath_from_uid_if_is_normal_content(self):
-
-        data = [
-            {
-                "rootPath": self.alternative_root.UID(),
-                "items": [{"title": "First tab", "foo": "bar"}],
-            }
-        ]
-        self.set_record_value(data=data)
-        commit()
-
-        response = self.api_session.get(self.controlpanel_url)
-        result = json.loads(response.json()["data"]["menu_configuration"])
-
-        self.assertEqual(len(result), 1)
-        self.assertEqual(
-            result[0]["rootPath"], self.alternative_root.absolute_url()
-        )

@@ -46,14 +46,6 @@ class DropDownMenuControlpanelDeserializeFromJson(
 
     def deserialize_data(self, data):
         for root in data:
-            rootpath = root.get("rootPath", "")
-            if rootpath != "/":
-                item = api.content.get(rootpath)
-                if not item:
-                    raise ValueError(
-                        "Root element not found: {}".format(rootpath)
-                    )
-                root["rootPath"] = item.UID()
             for tab in root.get("items", []):
                 for key in KEYS_WITH_URL:
                     value = tab.get(key, [])
