@@ -24,7 +24,7 @@ def serialize_data(json_data, show_children=False):
         if rootpath != "/":
             root_item = api.content.get(UID=rootpath)
             if root_item:
-                root["rootPath"] = "/".join(root_item.getPhysicalPath())
+                root["rootPath"] = root_item.absolute_url()
         for tab in root.get("items", []):
             for key in KEYS_WITH_URL:
                 value = tab.get(key, [])

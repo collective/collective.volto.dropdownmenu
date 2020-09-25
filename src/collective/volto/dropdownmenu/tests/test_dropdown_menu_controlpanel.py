@@ -573,6 +573,6 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
 
         self.assertEqual(len(result), 1)
         self.assertEqual(
-            result[0]["rootPath"],
-            "/".join(self.alternative_root.getPhysicalPath()),
+            result[0]["rootPath"], self.alternative_root.absolute_url()
         )
+
