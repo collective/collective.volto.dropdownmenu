@@ -47,6 +47,7 @@ def get_item_children(item):
     query = {
         "path": {"depth": 1, "query": path},
         "sort_on": "getObjPositionInParent",
+        "exclude_from_nav": False,
     }
     brains = api.content.find(**query)
     return [

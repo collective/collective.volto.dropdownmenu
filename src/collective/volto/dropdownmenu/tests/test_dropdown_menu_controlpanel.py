@@ -89,7 +89,12 @@ class BaseTestWithFolders(unittest.TestCase):
         self.doc_aa = api.content.create(
             container=self.folder_a, type="Document", title="Document aa"
         )
-
+        self.doc_excluded = api.content.create(
+            container=self.folder_a,
+            type="Document",
+            title="Document excluded",
+            exclude_from_nav=True,
+        )
         self.alternative_root = api.content.create(
             container=self.portal, type="Folder", title="Alternative root"
         )

@@ -5,7 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not show items excluded from navigation.
+  [cekk]
 
 
 1.0.0 (2020-09-30)

@@ -107,3 +107,26 @@ class DropDownMenuEndpointTest(BaseTestWithFolders):
 
         self.assertEqual(len(showMoreLink[0]["items"]), 2)
         self.assertEqual(len(showMoreLink[1]["items"]), 0)
+
+    def test_route_return_navigationRoot_children_honor_exclude_from_nav(self):
+        data = [
+            {
+                "rootPath": "/",
+                "items": [
+                    {
+                        "title": "First tab",
+                        "foo": "bar",
+                        "navigationRoot": [self.folder_a.UID()],
+                    }
+                ],
+            }
+        ]
+        self.set_record_value(data=data)
+        commit()
+
+        response = self.api_session.get("/@dropdown-menu")
+        result = response.json()
+
+        items = result[0]["items"][0]["navigationRoot"][0]["items"]
+        self.assertEqual(len(items), 2)
+        self.assertNotIn("Document excluded", [x["title"] for x in items])
