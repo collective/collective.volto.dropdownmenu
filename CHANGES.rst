@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.1 (unreleased)
+1.0.0 (2020-09-30)
 ------------------
 
 - Customized controlpanel's serializer and deserializer to handle internal links with uids.
