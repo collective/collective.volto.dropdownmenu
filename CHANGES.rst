@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.0.1 (2020-10-01)
 ------------------
 
 - Do not show items excluded from navigation.
