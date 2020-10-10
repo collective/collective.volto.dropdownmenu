@@ -5,7 +5,8 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add custom permission to manage menu configuration.
+  [cekk]
 
 
 1.0.1 (2020-10-01)

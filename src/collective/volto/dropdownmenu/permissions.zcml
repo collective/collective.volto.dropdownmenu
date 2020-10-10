@@ -4,7 +4,11 @@
   i18n_domain="plone">
 
   <configure zcml:condition="installed AccessControl.security">
-  <!-- -*- extra stuff goes here -*- -->
+  
+  <permission
+        id="volto.editablemenu.ManageMenu"
+        title="volto.editablemenu: ManageMenu"
+    />
 
 
   </configure>

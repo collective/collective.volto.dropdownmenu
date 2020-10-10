@@ -9,7 +9,7 @@
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       layer="collective.volto.dropdownmenu.interfaces.ICollectiveVoltoDropDownMenuLayer"
       name="dropdown-menu-settings"
-      permission="cmf.ManagePortal"
+      permission="volto.editablemenu.ManageMenu"
   />
 
 </configure>

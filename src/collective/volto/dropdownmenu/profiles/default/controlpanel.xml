@@ -15,7 +15,7 @@
         icon_expr=""
         visible="True"
         i18n:attributes="title">
-        <permission>Manage portal</permission>
+        <permission>volto.editablemenu: ManageMenu</permission>
     </configlet>
 
 </object>

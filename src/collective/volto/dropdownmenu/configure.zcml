@@ -7,9 +7,10 @@
 
   <i18n:registerTranslations directory="locales" />
 
+  <include file="permissions.zcml" />
+  <include file="upgrades.zcml" />
   <include package=".browser" />
   <include package=".restapi" />
-  <include file="permissions.zcml" />
 
   <genericsetup:registerProfile
       name="default"
