@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.3 (unreleased)
+1.0.3 (2020-11-25)
 ------------------
 
 - Handle Unauthorized when trying to access some menu elements.
