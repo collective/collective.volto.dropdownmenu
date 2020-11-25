@@ -5,7 +5,8 @@ Changelog
 1.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Handle Unauthorized when trying to access some menu elements.
+  [cekk]
 
 
 1.0.2 (2020-10-10)

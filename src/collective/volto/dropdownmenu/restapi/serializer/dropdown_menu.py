@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from AccessControl.unauthorized import Unauthorized
 from collective.volto.dropdownmenu.interfaces import IDropDownMenu
 from plone import api
 from plone.restapi.interfaces import ISerializeToJson
@@ -26,7 +27,11 @@ def serialize_data(json_data, show_children=False):
                 if value:
                     serialized = []
                     for uid in value:
-                        item = api.content.get(UID=uid)
+                        try:
+                            item = api.content.get(UID=uid)
+                        except Unauthorized:
+                            # private item and user can't see it
+                            continue
                         if not item:
                             continue
                         summary = getMultiAdapter(
