@@ -2,12 +2,14 @@
 from AccessControl.unauthorized import Unauthorized
 from collective.volto.dropdownmenu.interfaces import IDropDownMenu
 from plone import api
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from plone.restapi.interfaces import ISerializeToJson
 from plone.restapi.interfaces import ISerializeToJsonSummary
 from plone.restapi.serializer.controlpanels import ControlpanelSerializeToJson
 from plone.restapi.serializer.converters import json_compatible
 from zope.component import adapter
 from zope.component import getMultiAdapter
+from zope.component import subscribers
 from zope.globalrequest import getRequest
 from zope.interface import implementer
 
@@ -17,6 +19,7 @@ KEYS_WITH_URL = ["linkUrl", "navigationRoot", "showMoreLink"]
 
 
 def serialize_data(json_data, show_children=False):
+    request = getRequest()
     if not json_data:
         return ""
     data = json.loads(json_data)
@@ -35,7 +38,7 @@ def serialize_data(json_data, show_children=False):
                         if not item:
                             continue
                         summary = getMultiAdapter(
-                            (item, getRequest()), ISerializeToJsonSummary
+                            (item, request), ISerializeToJsonSummary
                         )()
                         if summary:
                             # serializer doesn't return uid
@@ -44,7 +47,27 @@ def serialize_data(json_data, show_children=False):
                                 summary["items"] = get_item_children(item)
                             serialized.append(summary)
                     tab[key] = serialized
+            fix_blocks(tab)
     return json_compatible(data)
+
+
+def fix_blocks(tab):
+    context = api.portal.get()
+    request = getRequest()
+    blocks = tab.get("blocks", {})
+    if blocks:
+        for id, block_value in blocks.items():
+            block_type = block_value.get("@type", "")
+            handlers = []
+            for h in subscribers(
+                (context, request), IBlockFieldSerializationTransformer,
+            ):
+                if h.block_type == block_type or h.block_type is None:
+                    handlers.append(h)
+            for handler in sorted(handlers, key=lambda h: h.order):
+                block_value = handler(block_value)
+
+            blocks[id] = block_value
 
 
 def get_item_children(item):
