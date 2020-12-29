@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.4 (unreleased)
+1.0.4 (2020-12-29)
 ------------------
 
 - Manage internal links in text blocks.
