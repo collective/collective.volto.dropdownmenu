@@ -65,7 +65,7 @@ class DropDownMenuControlpanelDeserializeFromJson(
                         ):
                             if (
                                 h.block_type == block_type
-                                or h.block_type is None
+                                or h.block_type is None  # noqa
                             ):
                                 handlers.append(h)
                         for handler in sorted(handlers, key=lambda h: h.order):

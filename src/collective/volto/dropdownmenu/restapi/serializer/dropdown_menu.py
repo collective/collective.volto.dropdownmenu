@@ -19,7 +19,6 @@ KEYS_WITH_URL = ["linkUrl", "navigationRoot", "showMoreLink"]
 
 
 def serialize_data(json_data, show_children=False):
-    context = api.portal.get()
     request = getRequest()
     if not json_data:
         return ""
@@ -48,22 +47,27 @@ def serialize_data(json_data, show_children=False):
                                 summary["items"] = get_item_children(item)
                             serialized.append(summary)
                     tab[key] = serialized
-            blocks = tab.get("blocks", {})
-            if blocks:
-                for id, block_value in blocks.items():
-                    block_type = block_value.get("@type", "")
-                    handlers = []
-                    for h in subscribers(
-                        (context, request),
-                        IBlockFieldSerializationTransformer,
-                    ):
-                        if h.block_type == block_type or h.block_type is None:
-                            handlers.append(h)
-                    for handler in sorted(handlers, key=lambda h: h.order):
-                        block_value = handler(block_value)
-
-                    blocks[id] = block_value
+            fix_blocks(tab)
     return json_compatible(data)
+
+
+def fix_blocks(tab):
+    context = api.portal.get()
+    request = getRequest()
+    blocks = tab.get("blocks", {})
+    if blocks:
+        for id, block_value in blocks.items():
+            block_type = block_value.get("@type", "")
+            handlers = []
+            for h in subscribers(
+                (context, request), IBlockFieldSerializationTransformer,
+            ):
+                if h.block_type == block_type or h.block_type is None:
+                    handlers.append(h)
+            for handler in sorted(handlers, key=lambda h: h.order):
+                block_value = handler(block_value)
+
+            blocks[id] = block_value
 
 
 def get_item_children(item):
