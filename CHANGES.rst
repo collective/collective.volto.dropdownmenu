@@ -5,7 +5,8 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Manage internal links in text blocks.
+  [cekk]
 
 
 1.0.3 (2020-11-25)

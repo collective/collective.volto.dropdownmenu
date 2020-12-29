@@ -336,6 +336,66 @@ class DropDownMenuServiceDeserializerTest(BaseTestWithFolders):
             record[0]["items"][0]["showMoreLink"], [self.folder_a.UID()]
         )
 
+    def test_deserializer_convert_links_in_blocks_into_resolveuid(self):
+
+        data = [
+            {
+                "rootPath": "/",
+                "items": [
+                    {
+                        "title": "First tab",
+                        "foo": "bar",
+                        "showMoreLink": [
+                            self.serialize(self.folder_a),
+                            {"@id": "http://www.plone.org"},
+                        ],
+                        "blocks": {
+                            "123456789": {
+                                "@type": "text",
+                                "text": {
+                                    "blocks": [
+                                        {
+                                            "key": "222h0",
+                                            "text": "link internal",
+                                            "type": "unstyled",
+                                            "depth": 0,
+                                            "inlineStyleRanges": [],
+                                            "entityRanges": [
+                                                {
+                                                    "offset": 5,
+                                                    "length": 7,
+                                                    "key": 0,
+                                                }
+                                            ],
+                                            "data": {},
+                                        }
+                                    ],
+                                    "entityMap": {
+                                        "0": {
+                                            "type": "LINK",
+                                            "mutability": "MUTABLE",
+                                            "data": {
+                                                "url": self.doc.absolute_url()
+                                            },
+                                        }
+                                    },
+                                },
+                            }
+                        },
+                    }
+                ],
+            }
+        ]
+        self.api_session.patch(
+            self.controlpanel_url,
+            json={"menu_configuration": json.dumps(data)},
+        )
+        commit()
+        record = self.get_record_value()
+        self.assertEqual(len(record), 1)
+        url = record[0]["items"][0]["blocks"]['123456789']['text']['entityMap']['0']['data']['url']
+        self.assertEqual(url, 'resolveuid/{}'.format(self.doc.UID()))
+
 
 class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
     def serialize(self, item):
@@ -514,3 +574,58 @@ class DropDownMenuServiceSerializerTest(BaseTestWithFolders):
         showMoreLinks = result[0]["items"][0]["showMoreLink"]
         self.assertEqual(showMoreLinks[0]["UID"], self.folder_a.UID())
         self.assertEqual(showMoreLinks[0]["title"], self.folder_a.title)
+
+    def test_serializer_convert_internal_links_from_blocks(self):
+
+        data = [
+            {
+                "rootPath": "/",
+                "items": [
+                    {
+                        "title": "First tab",
+                        "foo": "bar",
+                        "blocks": {
+                            "123456789": {
+                                "@type": "text",
+                                "text": {
+                                    "blocks": [
+                                        {
+                                            "key": "222h0",
+                                            "text": "link internal",
+                                            "type": "unstyled",
+                                            "depth": 0,
+                                            "inlineStyleRanges": [],
+                                            "entityRanges": [
+                                                {
+                                                    "offset": 5,
+                                                    "length": 7,
+                                                    "key": 0,
+                                                }
+                                            ],
+                                            "data": {},
+                                        }
+                                    ],
+                                    "entityMap": {
+                                        "0": {
+                                            "type": "LINK",
+                                            "mutability": "MUTABLE",
+                                            "data": {
+                                                "url": "resolveuid/{}".format(
+                                                    self.doc.UID())
+                                            },
+                                        }
+                                    },
+                                },
+                            }
+                        },
+                    }
+                ],
+            }
+        ]
+        self.set_record_value(data=data)
+        commit()
+        response = self.api_session.get(self.controlpanel_url)
+        result = json.loads(response.json()["data"]["menu_configuration"])
+        self.assertEqual(len(result), 1)
+        url = result[0]["items"][0]["blocks"]['123456789']['text']['entityMap']['0']['data']['url']
+        self.assertEqual(url, self.doc.absolute_url())

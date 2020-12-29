@@ -10,6 +10,7 @@ bin/
 buildout-cache/
 develop-eggs/
 eggs/
+extras/
 htmlcov/
 include/
 lib/
