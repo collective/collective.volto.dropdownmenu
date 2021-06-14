@@ -17,7 +17,7 @@ def to_1001(context):
     context.runImportStepFromProfile(DEFAULT_PROFILE, "controlpanel")
 
 
-def to_volto13(context):
+def to_volto13(context):  # noqa: C901
     # convert listing blocks with new standard
 
     logger.info("### START CONVERSION TO VOLTO 13 ###")
