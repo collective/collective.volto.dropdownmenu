@@ -5,7 +5,8 @@ Changelog
 1.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update blocks data to Volto 13.
+  [cekk]
 
 
 1.0.4 (2020-12-29)

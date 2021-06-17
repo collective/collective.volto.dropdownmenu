@@ -11,4 +11,13 @@
     profile="collective.volto.dropdownmenu:default"
     handler=".upgrades.to_1001"
     />
+  
+  <genericsetup:upgradeStep
+    source="1001"
+    destination="1100"
+    title="Volto 13"
+    description=""
+    profile="collective.volto.dropdownmenu:default"
+    handler=".upgrades.to_volto13"
+    />
 </configure>
