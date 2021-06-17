@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.5 (unreleased)
+1.1.0 (2021-06-17)
 ------------------
 
 - Update blocks data to Volto 13.
