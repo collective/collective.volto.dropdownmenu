@@ -1,6 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:cache="http://namespaces.zope.org/cache"
     xmlns:zcml="http://namespaces.zope.org/zcml">
 
   <plone:service
@@ -10,5 +11,7 @@
     factory=".get.DropDownMenuGet"
     permission="zope2.View"
     />
+  
+  <cache:ruleset ruleset="plone.content.dynamic" for=".get.DropDownMenuGet" />
 
 </configure>

@@ -5,7 +5,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- p.a.caching rules for rest api services.
+  [cekk]
 
 
 1.1.0 (2021-06-17)
