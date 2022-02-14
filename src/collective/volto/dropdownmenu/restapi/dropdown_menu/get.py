@@ -19,7 +19,7 @@ def cache_key(fun, *args, **kwargs):
     return (
         args,
         frozenset(kwargs.items()),  # WARN: json_data could be too big as cache key
-        ["Anonymous"]  if api.user.is_anonymous() else api.user.get_roles(user=api.user.get_current()),
+        ["Anonymous"] if api.user.is_anonymous() else api.user.get_roles(user=api.user.get_current()),
         api.portal.get_tool("portal_catalog").getCounter(),
     )
 
