@@ -33,6 +33,18 @@ Volto integration
 To use this product in Volto, your Volto project needs to include a new plugin: https://github.com/collective/volto-dropdownmenu
 
 
+Menu cache
+----------
+
+Restapi endpoint can took some time to reply if there are several items in the menu.
+
+As first workaround, there is an environment variable to enable a ramcache for it (disabled by default)::
+
+    environment-vars =
+        DROPDOWNMENU_EXPERIMENTAL_CACHE 1
+
+**USE THIS WITH CARE, BECAUSE STORED DATA COULD BE BIGGER THAN CACHE**
+
 Translations
 ------------
 
