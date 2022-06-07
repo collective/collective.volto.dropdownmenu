@@ -5,7 +5,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add optional ramcache for menu.
+  [mamico]
 
 
 1.2.0 (2021-10-10)
