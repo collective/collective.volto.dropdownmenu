@@ -72,11 +72,16 @@ def fix_blocks(tab):
 
 def get_item_children(item):
     path = "/".join(item.getPhysicalPath())
+    displayed_types = api.portal.get_registry_record("plone.displayed_types")
     query = {
         "path": {"depth": 1, "query": path},
         "sort_on": "getObjPositionInParent",
         "exclude_from_nav": False,
+        "portal_type": displayed_types,
     }
+    if api.portal.get_registry_record("plone.filter_on_workflow"):
+        review_states = api.portal.get_registry_record("plone.workflow_states_to_show")
+        query["review_state"] = review_states
     brains = api.content.find(**query)
     return [
         getMultiAdapter((brain, getRequest()), ISerializeToJsonSummary)()
