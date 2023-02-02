@@ -32,7 +32,7 @@ class TestSetup(unittest.TestCase):
     def test_product_installed(self):
         """Test if collective.volto.dropdownmenu is installed."""
         self.assertTrue(
-            self.installer.isProductInstalled("collective.volto.dropdownmenu")
+            self.installer.is_product_installed("collective.volto.dropdownmenu")
         )
 
     def test_browserlayer(self):
@@ -59,13 +59,13 @@ class TestUninstall(unittest.TestCase):
             self.installer = api.portal.get_tool("portal_quickinstaller")
         roles_before = api.user.get_roles(TEST_USER_ID)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.installer.uninstallProducts(["collective.volto.dropdownmenu"])
+        self.installer.uninstall_product("collective.volto.dropdownmenu")
         setRoles(self.portal, TEST_USER_ID, roles_before)
 
     def test_product_uninstalled(self):
         """Test if collective.volto.dropdownmenu is cleanly uninstalled."""
         self.assertFalse(
-            self.installer.isProductInstalled("collective.volto.dropdownmenu")
+            self.installer.is_product_installed("collective.volto.dropdownmenu")
         )
 
     def test_browserlayer_removed(self):
