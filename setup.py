@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="collective.volto.dropdownmenu",
-    version="1.3.1",
+    version="1.3.2.dev0",
     description="Add-on for Volto to manage a dropdown menu.",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
