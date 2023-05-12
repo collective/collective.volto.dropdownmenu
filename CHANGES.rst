@@ -5,6 +5,9 @@ Changelog
 1.3.2 (unreleased)
 ------------------
 
+- Add Spanish translation.
+  [macagua]
+
 - Nothing changed yet.
 
 
