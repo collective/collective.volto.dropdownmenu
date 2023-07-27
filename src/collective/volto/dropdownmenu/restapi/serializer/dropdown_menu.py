@@ -55,7 +55,7 @@ def serialize_data(json_data, show_children=False):
                                     except Unauthorized:
                                         # private item and user can't see it
                                         continue
-                                    if not item_obj or not item_obj.keys():
+                                    if not item_obj:
                                         continue
                                     lvl1_summary = getMultiAdapter(
                                     (item_obj, request), ISerializeToJsonSummary
