@@ -8,7 +8,8 @@ Changelog
 - Add Spanish translation.
   [macagua]
 
-- Nothing changed yet.
+- Update it translations
+  [lucabel]
 
 
 1.3.1 (2023-03-28)

@@ -19,7 +19,7 @@ msgstr ""
 
 #: collective/volto/dropdownmenu/profiles/default/controlpanel.xml
 msgid "Dropdown Menu settings"
-msgstr "Impostazioni Dropdown Menu"
+msgstr "Menu principale"
 
 #: collective/volto/dropdownmenu/configure.zcml:21
 msgid "Installs the collective.volto.dropdownmenu add-on."
