@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.volto.dropdownmenu\n"
 "POT-Creation-Date: 2025-07-07 09:30+0000\n"
-"PO-Revision-Date: 2025-07-07 11:40+0200\n"
+"PO-Revision-Date: 2025-07-07 19:45+0200\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
 "Language: es\n"
@@ -30,15 +30,15 @@ msgstr "Instalar el complemento collective.volto.dropdownmenu."
 
 #: collective/volto/dropdownmenu/configure.zcml:31
 msgid "Uninstalls the collective.volto.dropdownmenu add-on."
-msgstr "Desinstala el complemento collective.volto.dropdownmenu."
+msgstr "Desinstalar el complemento collective.volto.dropdownmenu."
 
 #: collective/volto/dropdownmenu/configure.zcml:22
 msgid "Volto Dropdown Menu"
-msgstr "Volto Dropdown Menu"
+msgstr "Volto: Menú Desplegable"
 
 #: collective/volto/dropdownmenu/configure.zcml:31
 msgid "Volto Dropdown Menu (uninstall)"
-msgstr "Volto Dropdown Menu (desinstala)"
+msgstr "Volto: Menú Desplegable (desinstalar)"
 
 #. Default: "Manage Menu tabs and contents."
 #: collective/volto/dropdownmenu/browser/controlpanel.py:13
