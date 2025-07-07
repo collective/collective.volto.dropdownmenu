@@ -1,10 +1,10 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+#SOME DESCRIPTIVE TITLE.
+#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-09-22 08:13+0000\n"
+"POT-Creation-Date: 2025-07-07 09:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,20 +21,25 @@ msgstr ""
 msgid "Dropdown Menu settings"
 msgstr ""
 
-#: collective/volto/dropdownmenu/configure.zcml:21
+#: collective/volto/dropdownmenu/configure.zcml:22
 msgid "Installs the collective.volto.dropdownmenu add-on."
 msgstr ""
 
-#: collective/volto/dropdownmenu/configure.zcml:30
+#: collective/volto/dropdownmenu/configure.zcml:31
 msgid "Uninstalls the collective.volto.dropdownmenu add-on."
 msgstr ""
 
-#: collective/volto/dropdownmenu/configure.zcml:21
+#: collective/volto/dropdownmenu/configure.zcml:22
 msgid "Volto Dropdown Menu"
 msgstr ""
 
-#: collective/volto/dropdownmenu/configure.zcml:30
+#: collective/volto/dropdownmenu/configure.zcml:31
 msgid "Volto Dropdown Menu (uninstall)"
+msgstr ""
+
+#. Default: "Manage Menu tabs and contents."
+#: collective/volto/dropdownmenu/browser/controlpanel.py:13
+msgid "dropdown_menu_settings_description"
 msgstr ""
 
 #. Default: "Dropdown Menu Settings"
@@ -43,6 +48,6 @@ msgid "dropdown_menu_settings_label"
 msgstr ""
 
 #. Default: "Menu configuration"
-#: collective/volto/dropdownmenu/interfaces.py:10
+#: collective/volto/dropdownmenu/interfaces.py:11
 msgid "menu_configuration_label"
 msgstr ""

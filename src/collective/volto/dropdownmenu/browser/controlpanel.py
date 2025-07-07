@@ -10,7 +10,9 @@ class DropDownMenuForm(controlpanel.RegistryEditForm):
     label = _(
         "dropdown_menu_settings_label", default=u"Dropdown Menu Settings"
     )
-    description = u"Manage Menu tabs and contents."
+    description = _(
+        "dropdown_menu_settings_description", default=u"Manage Menu tabs and contents."
+    )
 
 
 class DropDownMenu(controlpanel.ControlPanelFormWrapper):

@@ -5,7 +5,8 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Updated the i18n support.
+  [macagua]
 
 
 1.3.2 (2024-12-12)
