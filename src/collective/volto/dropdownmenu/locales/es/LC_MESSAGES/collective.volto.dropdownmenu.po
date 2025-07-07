@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.volto.dropdownmenu\n"
 "POT-Creation-Date: 2025-07-07 09:30+0000\n"
-"PO-Revision-Date: 2025-07-07 11:31+0200\n"
+"PO-Revision-Date: 2025-07-07 11:40+0200\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
 "Language: es\n"
@@ -43,7 +43,7 @@ msgstr "Volto Dropdown Menu (desinstala)"
 #. Default: "Manage Menu tabs and contents."
 #: collective/volto/dropdownmenu/browser/controlpanel.py:13
 msgid "dropdown_menu_settings_description"
-msgstr ""
+msgstr "Gestionar pestañas y contenidos del menú."
 
 #. Default: "Dropdown Menu Settings"
 #: collective/volto/dropdownmenu/browser/controlpanel.py:10

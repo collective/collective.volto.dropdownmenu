@@ -5,6 +5,9 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
+- Updated Spanish translation.
+  [macagua]
+
 - Updated the i18n support.
   [macagua]
 
