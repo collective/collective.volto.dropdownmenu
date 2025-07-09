@@ -1,4 +1,3 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
 # Translation of collective.volto.dropdownmenu.pot to Spanish
 # Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2023.
 msgid ""
