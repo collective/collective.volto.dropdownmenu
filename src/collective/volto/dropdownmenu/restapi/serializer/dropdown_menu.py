@@ -44,7 +44,28 @@ def serialize_data(json_data, show_children=False):
                             # serializer doesn't return uid
                             summary["UID"] = uid
                             if show_children:
-                                summary["items"] = get_item_children(item)
+                                lvl1_items = get_item_children(item)
+                                # Subitems
+                                lvl1_all = []
+                                for lvl1_item in lvl1_items:
+                                    server_url = request.get('SERVER_URL','')
+                                    lvl1_item_path = lvl1_item['@id'].replace(server_url,'')
+                                    try:
+                                        item_obj = api.content.get(path=lvl1_item_path)
+                                    except Unauthorized:
+                                        # private item and user can't see it
+                                        continue
+                                    if not item_obj:
+                                        continue
+                                    lvl1_summary = getMultiAdapter(
+                                    (item_obj, request), ISerializeToJsonSummary
+                                    )()
+                                    if lvl1_summary:
+                                        # serializer doesn't return uid
+                                        lvl1_summary["UID"] = api.content.get_uuid(obj=item_obj)
+                                        lvl1_summary["items"] = get_item_children(item_obj)
+                                    lvl1_all.append(lvl1_summary)
+                                summary["items"] = lvl1_all
                             serialized.append(summary)
                     tab[key] = serialized
             fix_blocks(tab)
